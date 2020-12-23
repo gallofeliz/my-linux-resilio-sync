@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  resilio-sync:
+    restart: unless-stopped
+    image: linuxserver/resilio-sync
+    volumes:
+      - ~/:/sync
+      - ./config:/config
+    ports:
+      - 55555:55555
+      - 8888:8888
+    environment:
+      - PGID=${GID?}
+      - PUID=${UID?}
+      - TZ=Europe/Paris
